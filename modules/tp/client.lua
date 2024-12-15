@@ -6,7 +6,7 @@ Tp = {}
 
 local function hackingMinigame(var)
     if var == "keypad" then
-        TriggerEvent("ultra-keypadhack", 6, 300, function (outcome)
+        TriggerEvent("ultra-keypadhack", 6, 180, function (outcome)
             if outcome == 1 then
                 return true
             else
