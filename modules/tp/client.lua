@@ -77,7 +77,7 @@ CreateThread(function ()
                 if reverseDist < 3 then
                     DisplayHelpTextThisFrame("tp_interact", true)
                     if IsControlJustPressed(0, 38) then
-                        teleportPlayer(current.arrivingCoords, playerPed)
+                        teleportPlayer(current.startingCoords, playerPed)
                     end
                 end
             end
