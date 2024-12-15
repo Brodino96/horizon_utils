@@ -20,15 +20,20 @@ local function initHacking(place)
             end
         end)
     end
+    if place.minigame == "voltage" then
+        TriggerEvent("ultra-voltlab", 60, function (outcome)
+            if outcome == 1 then
+                TriggerServerEvent("horizon:hackCompleted", place)
+            end
+        end)
+    end
 end
 
 local function itemUsed()
     local pCoords = GetEntityCoords(PlayerPedId())
-    print(pCoords)
 
     for i = 1, #Config.tp["hacker"] do
-        if #(Config.tp["hacker"][i].startingCoords - pCoords) < 5 then
-            print("hacking")
+        if #(Config.tp["hacker"][i].hackingCoords - pCoords) < 5 then
             initHacking(Config.tp["hacker"][i])
         end
     end
