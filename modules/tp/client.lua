@@ -64,7 +64,20 @@ CreateThread(function ()
                 if dist < 3 then
                     DisplayHelpTextThisFrame("tp_interact", true)
                     if IsControlJustPressed(0, 38) then
-                        teleportPlayer(Tp[i].arrivingCoords, playerPed)
+                        teleportPlayer(current.arrivingCoords, playerPed)
+                    end
+                end
+            end
+
+            local reverseDist = #(pCoords - current.arrivingCoords)
+            if reverseDist < 50 then
+                DrawMarker(21, current.arrivingCoords.x, current.arrivingCoords.y, current.arrivingCoords.z - 0.4, 0, 0, 0, 0, 0, 0, 0.3, 0.3, 0.3, 52, 177, 235, 200, 3, 1, 0, 0, nil, nil, false)
+                --DrawMarker(21, current.startingCoords.x, current.startingCoords.y, current.startingCoords.z, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 1.0, 0, 0, 255, 255, true, true, 2, false, nil, nil, false)
+                
+                if reverseDist < 3 then
+                    DisplayHelpTextThisFrame("tp_interact", true)
+                    if IsControlJustPressed(0, 38) then
+                        teleportPlayer(current.arrivingCoords, playerPed)
                     end
                 end
             end
