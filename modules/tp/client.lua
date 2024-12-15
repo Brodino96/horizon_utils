@@ -1,6 +1,7 @@
 ------------------ # ------------------ # ------------------ # ------------------ # ------------------
 
 Tp = {}
+AddTextEntry("tp_interact", "Premi ~INPUT_CONTEXT~ per usare l'ascensore")
 
 ------------------ # ------------------ # ------------------ # ------------------ # ------------------
 
@@ -54,12 +55,18 @@ CreateThread(function ()
         local pCoords = GetEntityCoords(playerPed)
 
         for i = 1, #Tp do
-            if #(pCoords - Tp[i].startingCoords) < 5 then
-                
-                if IsControlJustPressed(0, 38) then
-                    teleportPlayer(Tp[i].arrivingCoords, playerPed)
+            local current = Tp[i]
+            local dist = #(pCoords - current.startingCoords)
+            if dist < 50 then
+                DrawMarker(21, current.startingCoords.x, current.startingCoords.y, current.startingCoords.z, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 1.0, 0, 0, 255, 255, true, true, 2, true, "", "", true)
+                if dist < 5 then
+                    DisplayHelpTextThisFrame("tp_interact", true)
+                    if IsControlJustPressed(0, 38) then
+                        teleportPlayer(Tp[i].arrivingCoords, playerPed)
+                    end
                 end
             end
+
         end
     end
 end)
@@ -68,5 +75,9 @@ RegisterNetEvent("horizon:syncTps")
 AddEventHandler("horizon:syncTps", function (new)
     Tp = new
 end)
+
+------------------ # ------------------ # ------------------ # ------------------ # ------------------
+
+TriggerServerEvent("horizon:requestTpSync")
 
 ------------------ # ------------------ # ------------------ # ------------------ # ------------------
