@@ -50,7 +50,7 @@ CreateThread(function ()
             if #(pCoords - Tp[i].startingCoords) < 5 then
                 
                 if IsControlJustPressed(0, 38) then
-                    teleportPlayer(Tp[i].endingCoords, playerPed)
+                    teleportPlayer(Tp[i].arrivingCoords, playerPed)
                 end
             end
         end
