@@ -14,7 +14,7 @@ local function initHacking(place)
         end)
     end
     if place.minigame == "fingerprint" then
-        TriggerEvent("utk_fingerprint:Start", 4, 5, 3, function (outcome)
+        TriggerEvent("utk_fingerprint:Start", 3, 5, 3, function (outcome)
             if outcome then
                 TriggerServerEvent("horizon:hackCompleted", place)
             end
