@@ -58,7 +58,8 @@ CreateThread(function ()
             local current = Tp[i]
             local dist = #(pCoords - current.startingCoords)
             if dist < 50 then
-                DrawMarker(21, current.startingCoords.x, current.startingCoords.y, current.startingCoords.z, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 1.0, 0, 0, 255, 255, true, true, 2, true, "", "", true)
+                DrawMarker(21, current.startingCoords.x, current.startingCoords.y, current.startingCoords.z, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 1.0, 0, 0, 255, 255, true, true, 2, false, nil, nil, false)
+                --DrawMarker(21, current.startingCoords.x, current.startingCoords.y, current.startingCoords.z, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 1.0, 0, 0, 255, 255, true, true, 2, true, "", "", true)
                 if dist < 5 then
                     DisplayHelpTextThisFrame("tp_interact", true)
                     if IsControlJustPressed(0, 38) then
