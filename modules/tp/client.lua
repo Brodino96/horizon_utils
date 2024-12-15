@@ -26,9 +26,11 @@ end
 
 local function itemUsed()
     local pCoords = GetEntityCoords(PlayerPedId())
+    print(pCoords)
 
     for i = 1, #Config.tp["hacker"] do
         if #(Config.tp["hacker"][i].startingCoords - pCoords) < 5 then
+            print("hacking")
             initHacking(Config.tp["hacker"][i])
         end
     end
