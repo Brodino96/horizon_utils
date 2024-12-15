@@ -4,24 +4,14 @@ Tp = {}
 
 ------------------ # ------------------ # ------------------ # ------------------ # ------------------
 
-local function hackingMinigame(var)
-    if var == "keypad" then
+local function initHacking(place)
+    if place.minigame == "keypad" then
         TriggerEvent("ultra-keypadhack", 6, 180, function (outcome)
             if outcome == 1 then
-                return true
-            else
-                return false
+                TriggerServerEvent("horizon:hackCompleted", place)
             end
         end)
     end
-end
-
-local function initHacking(place)
-    if not hackingMinigame(place.minigame) then
-        return lib.notify({ title = "Hacking fallito"})
-    end
-
-    return TriggerServerEvent("horizon:hackCompleted", place)
 end
 
 local function itemUsed()
